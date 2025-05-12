@@ -12,7 +12,6 @@ locals {
   environment = local.environment_config.locals.environment
 }
 
-
 inputs = {
   environment = local.environment
 }
