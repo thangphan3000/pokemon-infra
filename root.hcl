@@ -1,11 +1,9 @@
 locals {
-  account_config     = read_terragrunt_config(find_in_parent_folders("account.hcl"))
-  region_config      = read_terragrunt_config(find_in_parent_folders("region.hcl"))
-  environment_config = read_terragrunt_config(find_in_parent_folders("environment.hcl"))
+  account_config = read_terragrunt_config(find_in_parent_folders("account.hcl"))
+  region_config  = read_terragrunt_config(find_in_parent_folders("region.hcl"))
 
-  team_owner  = local.account_config.locals.team_owner
-  region      = local.region_config.locals.region
-  environment = local.environment_config.locals.environment
+  profile = local.account_config.locals.profile
+  region  = local.region_config.locals.region
 }
 
 remote_state {
@@ -26,8 +24,8 @@ generate "provider" {
 
   contents = <<EOF
 provider "aws" {
-  region = "${local.region}"
-  profile = "production"
+  region  = "${local.region}"
+  profile = "${local.profile}"
 }
   EOF
 }

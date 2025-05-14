@@ -1,3 +1,3 @@
 locals {
-  team_owner = "DevOps"
+  profile = "production"
 }
