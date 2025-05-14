@@ -28,8 +28,8 @@ resource "aws_cloudfront_origin_access_control" "s3_oac" {
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
-    domain_name = var.bucket_regional_domain_name
-    origin_id   = local.s3_static_site_id
+    domain_name              = var.bucket_regional_domain_name
+    origin_id                = local.s3_static_site_id
     origin_access_control_id = aws_cloudfront_origin_access_control.s3_oac.id
   }
 
@@ -82,12 +82,12 @@ resource "aws_s3_bucket_policy" "allow_cloudfront_access" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid = "AllowCloudFrontRead"
+        Sid    = "AllowCloudFrontRead"
         Effect = "Allow"
         Principal = {
           Service = "cloudfront.amazonaws.com"
         }
-        Action = "s3:GetObject"
+        Action   = "s3:GetObject"
         Resource = "${var.s3_bucket_arn}/*"
         Condition = {
           StringEquals = {

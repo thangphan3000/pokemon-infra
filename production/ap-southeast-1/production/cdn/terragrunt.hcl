@@ -30,4 +30,3 @@ inputs = {
   s3_bucket_id                = dependency.s3.outputs.s3_bucket_id
   s3_bucket_arn               = dependency.s3.outputs.s3_bucket_arn
 }
-
